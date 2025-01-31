@@ -10,7 +10,8 @@ branding:
 inputs:
   goprivate:
     description: "GOPRIVATE value"
-    required: true
+    required: false
+    default: ''  # empty string
   token:
     description: "GitHub token"
     required: true
@@ -32,6 +33,11 @@ runs:
         GOPRIVATE: ${{ inputs.goprivate }}
         GH_TOKEN: ${{ inputs.token }}
       run: |
+        # check GOPRIVATE
+        if [ -z "${GOPRIVATE:?}" ]; then
+          export GOPRIVATE=github.com/${{ github.repository_owner }}
+        fi
+        # check local or global
         if [ "${{ inputs.local }}" = "true" ]; then
           ./git-goprivate/git-goprivate add --local
         else
