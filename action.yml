@@ -34,7 +34,7 @@ runs:
         GH_TOKEN: ${{ inputs.token }}
       run: |
         # check GOPRIVATE
-        if [ -z "${GOPRIVATE:?}" ]; then
+        if [ -z "${GOPRIVATE:-}" ]; then
           export GOPRIVATE=github.com/${{ github.repository_owner }}
         fi
         # check local or global
