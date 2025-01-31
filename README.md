@@ -1,6 +1,6 @@
-# Setup `GOPRIVATE`
+# Setup `GOPRIVATE` for GitHub Actions
 
-GitHub Actions for configure `.git/config` to clone private repositories under `GOPRIVATE`.
+A GitHub Action for configure git config to clone private repositories under `GOPRIVATE`.
 
 ## Example
 

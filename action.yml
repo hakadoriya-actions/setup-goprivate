@@ -1,6 +1,6 @@
 name: setup-goprivate
 # MEMO: Description must be less than 125 characters.
-description: "GitHub Actions for configure `.git/config` to clone private repositories under `GOPRIVATE`."
+description: "A GitHub Action for configure git config to clone private repositories under `GOPRIVATE`."
 author: "hakadoriya"
 
 branding:
