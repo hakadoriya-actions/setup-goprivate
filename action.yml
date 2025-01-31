@@ -1,0 +1,39 @@
+name: setup-goprivate
+# MEMO: Description must be less than 125 characters.
+description: "GitHub Actions for configure `.git/config` to clone private repositories under `GOPRIVATE`."
+author: "hakadoriya"
+
+branding:
+  icon: search
+  color: gray-dark
+
+inputs:
+  goprivate:
+    description: "GOPRIVATE value"
+    required: true
+  token:
+    description: "GitHub token"
+    required: true
+  local:
+    description: "Whether to configure local git config"
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: hakadoriya/git-goprivate
+        path: ./git-goprivate
+    - name: Configure .git/config for GOPRIVATE
+      shell: bash
+      env:
+        GOPRIVATE: ${{ inputs.goprivate }}
+        GH_TOKEN: ${{ inputs.token }}
+      run: |
+        if [ "${{ inputs.local }}" = "true" ]; then
+          ./git-goprivate/git-goprivate add --local
+        else
+          ./git-goprivate/git-goprivate add --global
+        fi
