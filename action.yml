@@ -30,6 +30,7 @@ runs:
     - name: Configure .git/config for GOPRIVATE
       shell: bash
       env:
+        LOGSH_COLOR: 'true'
         GOPRIVATE: ${{ inputs.goprivate }}
         GH_TOKEN: ${{ inputs.token }}
       run: |
